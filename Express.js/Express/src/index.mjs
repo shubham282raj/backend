@@ -1,6 +1,8 @@
-import express, { request, response } from 'express'
+import express from 'express'
 
-const app = express()
+const app = express();
+
+app.use(express.json())
 
 const PORT = process.env.PORT || 3000
 
@@ -35,6 +37,24 @@ app.get('/api/users', (req, res) => {
         })
         return res.send(sorted_users)
     }
+})
+
+
+app.post('/api/users', (req, res) => {
+    console.log(req.body)
+
+    const { body } = req
+
+    const new_user = {
+        id: mock_users[mock_users.length-1].id + 1,
+        ...body
+    }
+
+    mock_users.push(new_user)
+    
+    console.log(mock_users)
+
+    return res.status(201).send(new_user);
 })
 
 app.get('/api/users/:id', (req, res) => {

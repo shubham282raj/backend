@@ -1,4 +1,6 @@
 import express from 'express'
+import { query, validationResult, body, matchedData, checkSchema } from 'express-validator';
+import { create_user_val_schema } from './utils/validation_schemas.mjs';
 
 const app = express();
 
@@ -50,8 +52,11 @@ app.get('/', (req, res) => {
     res.status(200).send({msg: "Hello World"})
 })
 
-app.get('/api/users', (req, res) => {
-    console.log(req.query)
+app.get('/api/users', 
+    query('sort').isString().notEmpty().withMessage("Seems empty"),
+    (req, res) => {
+    const result = validationResult(req)
+    
     const { query: { sort }} = req
 
     if(!sort){
@@ -71,14 +76,39 @@ app.get('/api/users', (req, res) => {
 })
 
 
-app.post('/api/users', (req, res) => {
-    console.log(req.body)
+app.post('/api/users', 
+    // [
+    //     body('username')
+    //         .notEmpty()
+    //         .withMessage('username cannot be empty')
+    //         .isLength({min: 5, max: 32})
+    //         .withMessage('username must be at least 5 characters with a max of 32 characters')
+    //         .isString()
+    //         .withMessage('username must be a string'),
+    //     body('name')
+    //         .notEmpty()
+    //         .withMessage('name cannot be empty')
+    //         .isString()
+    //         .withMessage('name must be a string')
+    // ],
+    checkSchema(create_user_val_schema),
+    (req, res) => {
 
-    const { body } = req
+    const result = validationResult(req)
+    console.log(result)
+
+    if(!result.isEmpty()){
+        return res.status(400).send({errors: result.array()})
+    }
+
+    // console.log(req.body)
+    const data = matchedData(req)
+
+    // const { body } = req
 
     const new_user = {
         id: mock_users[mock_users.length-1].id + 1,
-        ...body
+        ...data
     }
 
     mock_users.push(new_user)

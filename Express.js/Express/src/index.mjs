@@ -2,6 +2,8 @@ import express from "express";
 import router from "./routes/index.mjs";
 import cookieParser from "cookie-parser";
 import sessions from "express-session";
+import passport from "passport";
+import "./strategies/local-strategy.mjs";
 import { logging_middleware } from "./utils/middlewares.mjs";
 
 const app = express();
@@ -18,6 +20,10 @@ app.use(
     },
   })
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(router);
 app.use(logging_middleware);
 

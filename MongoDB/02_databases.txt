@@ -1,0 +1,15 @@
+to show all database names
+empty databases are not shown
+    > show dbs
+
+to use a database
+    > use <database_name>
+
+to create a database
+    > use <database_name
+
+inside a database, to create a collection
+    > db.createCollection("students")
+
+inside a database, to drop this database
+    > db.dropDatabase()

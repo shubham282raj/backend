@@ -1,0 +1,51 @@
+Official link 
+https://www.mongodb.com/docs/manual/installation/
+
+For Fedora
+https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/
+
+sudo cd
+> cd /etc/yup.repos.d
+> sudo touch mongodb-org-7.0
+> nano mongodb-org-7.0
+
+paste this
+
+[mongodb-org-7.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/7.0/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://pgp.mongodb.com/server-7.0.asc
+
+> sudo yum install -y mongodb-org
+
+to start mongod
+> sudo systemctl start mongod
+
+to check the status
+> sudo systemctl status mongod
+
+to stop the process
+sudo systemctl stop mongod
+
+------------------------------------------
+
+downloading mongosh
+https://www.mongodb.com/try/download/shell
+
+select version, platform and package
+for Fedora RHEL/CentOS(7+)x64 and rpm
+
+go to folder that contains the download
+
+> sudo dnf install <file_name.extension>
+
+to launch
+> mongosh
+
+to clear the screen
+> cls
+
+to exit mongosh
+> exit

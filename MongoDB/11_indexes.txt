@@ -1,0 +1,14 @@
+to create an index
+    > db.students.createIndex({name: 1})
+
+to list all indexes
+    > db.students.getIndexes()
+
+to drop an index
+    > db.students.dropIndex(<index_name>)
+    > db.students.dropIndex("name_1")
+
+    this will search for 5 documents
+        > db.students.find({name: 'adam'}).explain('executionStats')
+    this will now search for only 1 document (after making name index)
+        > db.students.find({name: 'adam'}).explain('executionStats')

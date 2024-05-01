@@ -1,0 +1,9 @@
+inside a database, to insert a document
+if collection 'students' does not exists, it will be created
+    > db.students.insertOne({ name: "shubham", age: 30, gpa: 3.2})
+
+to list all the documents
+    > db.students.find()
+
+to add many documents in a database
+    > db.students.insertMany([ { name: "patrik" }, { name: "adam" }, { name: "sandy" } ])

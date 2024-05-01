@@ -1,0 +1,10 @@
+by default, returned sorted by _id
+to sort the returns documents
+1: sorted alphabetically, -1: reversed
+    > db.students.find().sort({name: 1})
+    > db.students.find().sort({name: 1, age: 1})
+
+to limit documents returned to us
+    > db.students.find().limit(3)
+
+    > db.students.find().sort({ name: 1 }).limit(3)

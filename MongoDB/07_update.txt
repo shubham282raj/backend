@@ -1,0 +1,16 @@
+syntax
+    > db.<document_name>.updateOne({filter}, {update})
+    > db.<document_name>.updateMany({filter}, {update})
+
+to set a field
+    > db.students.updateOne({name: "adam"}, { $set:{fullTime: true} })
+    > db.students.updateOne({_id: ObjectId('663171591a587ec0f25400ad')}, { $set:{fullTime: false} })
+
+to unset a field
+    > db.students.updateOne({_id: ObjectId('663171591a587ec0f25400ad')}, { $unset: {fullTime: ""}})
+
+updateMany
+    > db.students.updateMany({}, { $set:{college: "IIT Bombay"} })
+
+to check if a field exists or not
+    > db.students.updateMany({fullTime: {$exists: false}}, { $set:{fullTime: true} })

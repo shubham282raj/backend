@@ -1,0 +1,14 @@
+syntax
+    > db.<collection_name>.find({query}, {projection})
+
+to find by a field name
+    > db.students.find({name: "shubham"})
+    > db.students.find({fullTime: false})
+    > db.students.find({fullTime: true, name: 'shubham'})
+
+projection will return only those feilds in it
+    > db.students.find({}, {name: true}) 
+    > db.students.find({name: 'shubham'}, {name: true}) 
+
+_id is always returned by default
+    > db.students.find({name: 'shubham'}, {name: true, _id: false})

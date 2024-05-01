@@ -1,0 +1,14 @@
+showing all collections
+    > show collections
+    
+creating a collection
+    > db.createCollection(<collection_name>)
+
+to drop a collection
+    > db.<collection_name>.drop()
+
+we can create a collection with capped (upper limit) 
+size in bytes
+max in number of documents
+we can also set auto indexing of id
+    > db.createCollection('teachers', {capped: true, size: 1000000, max: 100}, {autoIndexId: false})

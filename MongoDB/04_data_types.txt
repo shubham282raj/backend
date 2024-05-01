@@ -1,0 +1,22 @@
+
+    > db.students.insertOne( {
+        name: "shubham",
+        age: 21,
+        gpa: 2.5,
+        fullTime: true,
+        registerDate: new Date(),
+        dob: new Date("2003-06-04T03:34:43.000+00:00"),
+        graduationDate: null,
+        courses: ['physics', 'chemistry', 'maths'],
+        address: { street: '123 fake st', city: 'indore', zip: '453441'}
+    } )
+
+string
+int
+double
+bool
+data (realtime)
+data
+null (placeholder)
+array
+object (nested document)

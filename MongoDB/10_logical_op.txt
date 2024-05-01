@@ -1,0 +1,16 @@
+Logical operators return data based on expressions that evaluate to true or false
+
+    > db.students.find({$and: [{fullTime: true}, {age: {$lte: 22}}]})
+    > db.students.find({$or: [{fullTime: true}, {age: {$lte: 22}}]})
+    > db.students.find({$nor: [{fullTime: true}, {age: {$lte: 22}}]})
+    > db.students.find({$not: [{fullTime: true}, {age: {$lte: 22}}]})
+    
+    they both are equvivalent but if a student have age: "null"
+    the first one will not return them but second one will
+        > db.students.find({age: {$lt: 30}})
+        > db.students.find({age: {$not: {$gte: 30}}})
+
+$and Joins query clauses with a logical AND returns all documents that match the conditions of both clauses.
+$not Inverts the effect of a query expression and returns documents that do not match the query expression.
+$nor Joins query clauses with a logical NOR returns all documents that fail to match both clauses.
+$or Joins query clauses with a logical OR returns all documents that match the conditions of either clause.

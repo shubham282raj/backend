@@ -1,0 +1,8 @@
+syntax
+    > db.<collection_name>.deleteOne({query})
+    > db.<collection_name>.deleteMany({query})
+
+Examples
+    > db.students.deleteOne({ name: "patrik" })
+    > db.students.deleteMany({ fullTime: false })
+    > db.students.deleteMany({ name: {$exists:false} })
